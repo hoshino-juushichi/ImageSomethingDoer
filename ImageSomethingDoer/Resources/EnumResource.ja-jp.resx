@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutApp" xml:space="preserve">
+    <value>ImageSomethingDoer 2021 Kukuri Studio</value>
+  </data>
+  <data name="AboutAppCmdMenu" xml:space="preserve">
+    <value>ImageSomethingDoerについて</value>
+  </data>
+  <data name="BackgroundColorTooltip" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="BackgroundColorTypeBlack" xml:space="preserve">
+    <value>黒</value>
+  </data>
+  <data name="BackgroundColorTypeBlue" xml:space="preserve">
+    <value>青</value>
+  </data>
+  <data name="BackgroundColorTypeChecker" xml:space="preserve">
+    <value>市松模様</value>
+  </data>
+  <data name="BackgroundColorTypeGreen" xml:space="preserve">
+    <value>緑</value>
+  </data>
+  <data name="BackgroundColorTypeRed" xml:space="preserve">
+    <value>赤</value>
+  </data>
+  <data name="BackgroundColorTypeWhite" xml:space="preserve">
+    <value>白</value>
+  </data>
+  <data name="CloseFileCmdMenu" xml:space="preserve">
+    <value>閉じる(_C)</value>
+  </data>
+  <data name="CloseFileCmdTooltip" xml:space="preserve">
+    <value>ファイルを閉じる</value>
+  </data>
+  <data name="ColorMaskCmdATooltip" xml:space="preserve">
+    <value>Aチャンネルをマスク</value>
+  </data>
+  <data name="ColorMaskCmdBTooltip" xml:space="preserve">
+    <value>Bチャンネルをマスク</value>
+  </data>
+  <data name="ColorMaskCmdGTooltip" xml:space="preserve">
+    <value>Gチャンネルをマスク</value>
+  </data>
+  <data name="ColorMaskCmdRTooltip" xml:space="preserve">
+    <value>Rチャンネルをマスク</value>
+  </data>
+  <data name="DisplayAlphaCmdTooltip" xml:space="preserve">
+    <value>アルファチャンネルを表示</value>
+  </data>
+  <data name="ExportChannelACmdMenu" xml:space="preserve">
+    <value>Aチャンネルを書き出す</value>
+  </data>
+  <data name="ExportChannelBCmdMenu" xml:space="preserve">
+    <value>Bチャンネルを書き出す</value>
+  </data>
+  <data name="ExportChannelGCmdMenu" xml:space="preserve">
+    <value>Gチャンネルを書き出す</value>
+  </data>
+  <data name="ExportChannelMenu" xml:space="preserve">
+    <value>チャンネルを書き出す</value>
+  </data>
+  <data name="ExportChannelRCmdMenu" xml:space="preserve">
+    <value>Rチャンネルを書き出す</value>
+  </data>
+  <data name="FileDialogFilterAll" xml:space="preserve">
+    <value>All Files (*.*)|*.*</value>
+  </data>
+  <data name="FileDialogFilterPNG" xml:space="preserve">
+    <value>PNGファイル (*.png)|*.png|全てのファイル (*.*)|*.*</value>
+  </data>
+  <data name="FileMenu" xml:space="preserve">
+    <value>ファイル(_F)</value>
+  </data>
+  <data name="HelpMenu" xml:space="preserve">
+    <value>ヘルプ(_H)</value>
+  </data>
+  <data name="ImageScalingTooltip" xml:space="preserve">
+    <value>表示スケール</value>
+  </data>
+  <data name="ImageScalingTypeIX16" xml:space="preserve">
+    <value>x 1/16</value>
+  </data>
+  <data name="ImageScalingTypeIX2" xml:space="preserve">
+    <value>x 1/2</value>
+  </data>
+  <data name="ImageScalingTypeIX32" xml:space="preserve">
+    <value>x 1/32</value>
+  </data>
+  <data name="ImageScalingTypeIX4" xml:space="preserve">
+    <value>x 1/4</value>
+  </data>
+  <data name="ImageScalingTypeIX8" xml:space="preserve">
+    <value>x 1/8</value>
+  </data>
+  <data name="ImageScalingTypeX1" xml:space="preserve">
+    <value>x 1</value>
+  </data>
+  <data name="ImageScalingTypeX16" xml:space="preserve">
+    <value>x 16</value>
+  </data>
+  <data name="ImageScalingTypeX2" xml:space="preserve">
+    <value>x 2</value>
+  </data>
+  <data name="ImageScalingTypeX32" xml:space="preserve">
+    <value>x 32</value>
+  </data>
+  <data name="ImageScalingTypeX4" xml:space="preserve">
+    <value>x 4</value>
+  </data>
+  <data name="ImageScalingTypeX8" xml:space="preserve">
+    <value>x 8</value>
+  </data>
+  <data name="LoadToChannelACmdMenu" xml:space="preserve">
+    <value>Aチャンネルへ読み込む</value>
+  </data>
+  <data name="LoadToChannelBCmdMenu" xml:space="preserve">
+    <value>Bチャンネルへ読み込む</value>
+  </data>
+  <data name="LoadToChannelGCmdMenu" xml:space="preserve">
+    <value>Gチャンネルへ読み込む</value>
+  </data>
+  <data name="LoadToChannelMenu" xml:space="preserve">
+    <value>チャンネルへ読み込む</value>
+  </data>
+  <data name="LoadToChannelRCmdMenu" xml:space="preserve">
+    <value>Rチャンネルへ読み込む</value>
+  </data>
+  <data name="ModelError_ChannelLoadImageBppSupport" xml:space="preserve">
+    <value>読み込む画像は32,24,8bppだけサポートしています</value>
+  </data>
+  <data name="ModelError_ImageDoesNotHaveAlpha" xml:space="preserve">
+    <value>読み込む画像にAチャンネルがありません</value>
+  </data>
+  <data name="ModelError_ImageWidthAndHeightUnmatch" xml:space="preserve">
+    <value>画像の縦横のサイズが異なります</value>
+  </data>
+  <data name="ModelError_MainImageBppSupport" xml:space="preserve">
+    <value>メイン画像は32,24,8bppだけサポートしています</value>
+  </data>
+  <data name="ModelError_Unsupported" xml:space="preserve">
+    <value>サポートされていません</value>
+  </data>
+  <data name="OpenFileCmdMenu" xml:space="preserve">
+    <value>画像を開く(_O)</value>
+  </data>
+  <data name="OpenFileCmdTooltip" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="QuitAppCmdMenu" xml:space="preserve">
+    <value>終了(_X)</value>
+  </data>
+  <data name="SaveFile24CmdMenu" xml:space="preserve">
+    <value>名前を付けて保存(24Bpp)</value>
+  </data>
+  <data name="SaveFile32CmdMenu" xml:space="preserve">
+    <value>名前を付けて保存(32Bpp)(_S)</value>
+  </data>
+  <data name="SaveFileCmdTooltip" xml:space="preserve">
+    <value>名前を付けて保存(PNG)</value>
+  </data>
+  <data name="ViewMenu" xml:space="preserve">
+    <value>表示(_V)</value>
+  </data>
+</root>

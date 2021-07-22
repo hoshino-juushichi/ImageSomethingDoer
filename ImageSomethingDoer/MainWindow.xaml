@@ -1,0 +1,138 @@
+﻿<Window x:Class="ImageSomethingDoer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageSomethingDoer"
+        xmlns:dd="urn:gong-wpf-dragdrop"
+        mc:Ignorable="d"
+        Title="ImageSomethingDoer" Height="600" Width="800"
+		Name="xMainWindow">
+	<Window.DataContext>
+		<local:ImageSomethingDoerViewModel/>
+	</Window.DataContext>
+	<Window.Resources>
+		<local:EnumToCheckableItemsConverter x:Key="EnumToCheckableItemsConverter"/>
+	</Window.Resources>
+	<Window.InputBindings>
+		<KeyBinding Command="{Binding OpenFileCmd}" Gesture="Ctrl+O" Key="O"/>
+		<KeyBinding Command="{Binding SaveFileCmd}" Gesture="Ctrl+S" Key="S"/>
+	</Window.InputBindings>
+	<DockPanel>
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="{Binding FileMenu}">
+				<MenuItem Header="{Binding OpenFileCmdMenu}" Command="{Binding OpenFileCmd}" InputGestureText="Ctrl+O"/>
+				<MenuItem Header="{Binding SaveFile32CmdMenu}" Command="{Binding SaveFileCmd}" CommandParameter="32" InputGestureText="Ctrl+S"/>
+				<MenuItem Header="{Binding SaveFile24CmdMenu}" Command="{Binding SaveFileCmd}" CommandParameter="24"/>
+				<Separator/>
+				<MenuItem Header="{Binding LoadToChannelMenu}">
+					<MenuItem Header="{Binding LoadToChannelRCmdMenu}" Command="{Binding OpenFileToChannelCmd}" CommandParameter="{x:Static local:ImageChannel.R}"/>
+					<MenuItem Header="{Binding LoadToChannelGCmdMenu}" Command="{Binding OpenFileToChannelCmd}" CommandParameter="{x:Static local:ImageChannel.G}"/>
+					<MenuItem Header="{Binding LoadToChannelBCmdMenu}" Command="{Binding OpenFileToChannelCmd}" CommandParameter="{x:Static local:ImageChannel.B}"/>
+					<MenuItem Header="{Binding LoadToChannelACmdMenu}" Command="{Binding OpenFileToChannelCmd}" CommandParameter="{x:Static local:ImageChannel.A}"/>
+				</MenuItem>
+				<MenuItem Header="{Binding ExportChannelMenu}">
+					<MenuItem Header="{Binding ExportChannelRCmdMenu}" Command="{Binding SaveFileFromChannelCmd}" CommandParameter="{x:Static local:ImageChannel.R}"/>
+					<MenuItem Header="{Binding ExportChannelGCmdMenu}" Command="{Binding SaveFileFromChannelCmd}" CommandParameter="{x:Static local:ImageChannel.G}"/>
+					<MenuItem Header="{Binding ExportChannelBCmdMenu}" Command="{Binding SaveFileFromChannelCmd}" CommandParameter="{x:Static local:ImageChannel.B}"/>
+					<MenuItem Header="{Binding ExportChannelACmdMenu}" Command="{Binding SaveFileFromChannelCmd}" CommandParameter="{x:Static local:ImageChannel.A}"/>
+				</MenuItem>
+				<Separator/>
+				<MenuItem Header="{Binding CloseFileCmdMenu}" Command="{Binding CloseFileCmd}"/>
+				<MenuItem Header="{Binding QuitAppCmdMenu}" Command="{Binding QuitAppCmd}"/>
+			</MenuItem>
+			<MenuItem Header="{Binding ViewMenu}">
+				<MenuItem Header="(none)" Command=""/>
+			</MenuItem>
+			<MenuItem Header="{Binding HelpMenu}">
+				<MenuItem Header="{Binding AboutAppCmdMenu}" Command="{Binding AboutAppCmd}"/>
+			</MenuItem>
+		</Menu>
+
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+			<Rectangle Grid.Row="1" Grid.RowSpan="2" Fill="#FF303030"/>
+
+			<ToolBarTray>
+				<ToolBar Band="1" BandIndex="1">
+					<Button ToolTip="{Binding OpenFileCmdTooltip}" 
+		                    Command="{Binding Path=OpenFileCmd}">
+						<Image Width="24" Height="24" Source="Resources\open.png"/>
+					</Button>
+					<Button ToolTip="{Binding SaveFileCmdTooltip}" 
+		                    Command="{Binding Path=SaveFileCmd}">
+						<Image Width="24" Height="24" Source="Resources\save.png"/>
+					</Button>
+					<Separator />
+					<ToggleButton ToolTip="{Binding DisplayAlphaCmdTooltip}" 
+		                    Command="{Binding Path=DisplayAlphaCmd}"
+                            IsChecked="{Binding IsChecked_DisplayAlpha}">
+						<Image Width="24" Height="24" Source="Resources\alpha.png"/>
+					</ToggleButton>
+					<Separator />
+					<ToggleButton ToolTip="{Binding ColorMaskCmdRTooltip}" 
+		                    Command="{Binding Path=ColorMaskCmd}"
+							CommandParameter="{x:Static local:ImageChannel.R}"
+                            IsChecked="{Binding IsChecked_ColorMaskR}">
+						<Image Width="24" Height="24" Source="Resources\R.png"/>
+					</ToggleButton>
+					<ToggleButton ToolTip="{Binding ColorMaskCmdGTooltip}" 
+		                    Command="{Binding Path=ColorMaskCmd}"
+							CommandParameter="{x:Static local:ImageChannel.G}"
+                            IsChecked="{Binding IsChecked_ColorMaskG}">
+						<Image Width="24" Height="24" Source="Resources\G.png"/>
+					</ToggleButton>
+					<ToggleButton ToolTip="{Binding ColorMaskCmdBTooltip}" 
+		                    Command="{Binding Path=ColorMaskCmd}"
+							CommandParameter="{x:Static local:ImageChannel.B}"
+                            IsChecked="{Binding IsChecked_ColorMaskB}">
+						<Image Width="24" Height="24" Source="Resources\B.png"/>
+					</ToggleButton>
+					<ToggleButton ToolTip="{Binding ColorMaskCmdATooltip}" 
+		                    Command="{Binding Path=ColorMaskCmd}"
+							CommandParameter="{x:Static local:ImageChannel.A}"
+                            IsChecked="{Binding IsChecked_ColorMaskA}">
+						<Image Width="24" Height="24" Source="Resources\A.png"/>
+					</ToggleButton>
+					<ComboBox Width="72" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}"
+                              ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:ImageScalingType}}}"
+                              SelectedValue="{Binding ImageScalingType}"
+							  ToolTip="{Binding ImageScalingTooltip}" 
+                              >
+					</ComboBox>
+					<ComboBox Width="80" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}"
+                              ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:BackgroundColorType}}}"
+                              SelectedValue="{Binding BackgroundColorType}"
+							  ToolTip="{Binding BackgroundColorTooltip}"
+                              >
+					</ComboBox>
+				</ToolBar>
+			</ToolBarTray>
+
+			<ScrollViewer x:Name="xScrollViewer"
+                        Grid.Row="1"
+                        HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"
+						dd:DragDrop.IsDropTarget="True"
+                        dd:DragDrop.DropHandler="{Binding}"				
+                          >
+				<Canvas x:Name="xCanvas"
+                        Height="{Binding ImageHeight}" Width="{Binding ImageWidth}">
+					<Canvas.RenderTransform>
+						<MatrixTransform x:Name="xCanvasMatrixTransform" Matrix="{Binding ImageScalingMatrix}" />
+					</Canvas.RenderTransform>
+					<Image x:Name="xImage" HorizontalAlignment="Left" Stretch="None" Source="{Binding ImageSource}" RenderOptions.BitmapScalingMode="NearestNeighbor"
+						dd:DragDrop.IsDropTarget="True"
+                        dd:DragDrop.DropHandler="{Binding}"				
+                           />
+				</Canvas>
+			</ScrollViewer>
+		</Grid>
+	</DockPanel>
+</Window>

@@ -1,0 +1,46 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ImageSomethingDoer/1.0.0": {
+        "dependencies": {
+          "gong-wpf-dragdrop": "2.3.2"
+        },
+        "runtime": {
+          "ImageSomethingDoer.dll": {}
+        },
+        "resources": {
+          "ja-jp/ImageSomethingDoer.resources.dll": {
+            "locale": "ja-jp"
+          }
+        }
+      },
+      "gong-wpf-dragdrop/2.3.2": {
+        "runtime": {
+          "lib/netcoreapp3.1/GongSolutions.WPF.DragDrop.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.3.2.3"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ImageSomethingDoer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "gong-wpf-dragdrop/2.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DNDROdFmlwn544P2qVF+f+aHRZmEp8ub8IrjvWgT3VAK7LfdN3BcEi9mSEzmt8hUqIdt1+B1VHkJUdK7kO/zKw==",
+      "path": "gong-wpf-dragdrop/2.3.2",
+      "hashPath": "gong-wpf-dragdrop.2.3.2.nupkg.sha512"
+    }
+  }
+}

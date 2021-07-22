@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Copyright>Kukuri Studio</Copyright>
+    <Company>Kukuri Studio</Company>
+    <Authors>Kukuri Studio</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\A.png" />
+    <None Remove="Resources\alpha.png" />
+    <None Remove="Resources\B.png" />
+    <None Remove="Resources\G.png" />
+    <None Remove="Resources\open.png" />
+    <None Remove="Resources\R.png" />
+    <None Remove="Resources\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\A.png" />
+    <Resource Include="Resources\alpha.png" />
+    <Resource Include="Resources\B.png" />
+    <Resource Include="Resources\G.png" />
+    <Resource Include="Resources\open.png" />
+    <Resource Include="Resources\R.png" />
+    <Resource Include="Resources\save.png" />
+  </ItemGroup>
+
+</Project>
