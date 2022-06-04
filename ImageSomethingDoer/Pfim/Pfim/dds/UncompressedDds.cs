@@ -101,7 +101,7 @@ namespace Pfim
             {
                 int width = (int)Math.Max(info.DivSize, (int)(Header.Width / Math.Pow(2, i + 1)));
                 int height = (int)Math.Max(info.DivSize, Header.Height / Math.Pow(2, i + 1));
-                int stride = Util.Stride(width, BitsPerPixel, Util.StrideOption.Padding4Pixels);
+                int stride = Util.Stride(width, BitsPerPixel);
                 len = stride * height;
 
                 _mipMaps[i] = new MipMapOffset(width, height, stride, totalLen, len);
@@ -121,7 +121,7 @@ namespace Pfim
             var totalLen = AllocateMipMaps(imageInfo);
             byte[] data = config.Allocator.Rent(totalLen);
 
-            var stride = Util.Stride((int) Header.Width, BitsPerPixel, Util.StrideOption.Padding4Pixels);
+            var stride = Util.Stride((int) Header.Width, BitsPerPixel);
             var width = (int) Header.Width;
             var len = DataLen;
 

@@ -85,7 +85,11 @@ namespace Pfim
                 case DxgiFormat.B8G8R8A8_TYPELESS:
                 case DxgiFormat.B8G8R8A8_UNORM:
                 case DxgiFormat.B8G8R8A8_UNORM_SRGB:
+                case DxgiFormat.B8G8R8X8_UNORM_SRGB:
                     return new UncompressedDds(header, config, 32, false);
+
+                case DxgiFormat.B5G5R5A1_UNORM:
+                    return new UncompressedDds(header, config, 16, false);
 
                 case DxgiFormat.UNKNOWN:
                 case DxgiFormat.R32G32B32A32_TYPELESS:
@@ -154,7 +158,6 @@ namespace Pfim
                 case DxgiFormat.B8G8R8X8_UNORM:
                 case DxgiFormat.R10G10B10_XR_BIAS_A2_UNORM:
                 case DxgiFormat.B8G8R8X8_TYPELESS:
-                case DxgiFormat.B8G8R8X8_UNORM_SRGB:
                 case DxgiFormat.NV12:
                 case DxgiFormat.P010:
                 case DxgiFormat.P016:
@@ -172,7 +175,7 @@ namespace Pfim
                 case DxgiFormat.V208:
                 case DxgiFormat.V408:
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentException($"Unimplemented DXGI format: {DxgiFormat}");
             }
         }
     }

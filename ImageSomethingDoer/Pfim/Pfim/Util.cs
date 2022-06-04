@@ -151,7 +151,7 @@ namespace Pfim
             int rowsPerBuffer = Math.Min(bufSize, dataLen) / stride;
             int dataIndex = dataLen - stride;
             int rowsRead = 0;
-            int totalRows = dataLen / rowSize;
+            int totalRows = dataLen / stride;
             int rowsToRead = rowsPerBuffer;
 
             if (rowsPerBuffer == 0)
@@ -177,20 +177,13 @@ namespace Pfim
             } while (dataIndex >= 0 && workingSize != 0);
         }
 
-        public enum StrideOption
-        {
-            None, Padding4Pixels,
-        }
-
-
         /// <summary>
         /// Calculates stride of an image in bytes given its width in pixels and pixel depth in bits
         /// </summary>
         /// <param name="width">Width in pixels</param>
         /// <param name="pixelDepth">The number of bits that represents a pixel</param>
-        /// <param name="option"></param>
         /// <returns>The number of bytes that consists of a single line</returns>
-        public static int Stride(int width, int pixelDepth, StrideOption option = StrideOption.None)
+        public static int Stride(int width, int pixelDepth)
         {
             if (width <= 0)
                 throw new ArgumentException("Width must be greater than zero", nameof(width));
@@ -198,11 +191,6 @@ namespace Pfim
                 throw new ArgumentException("Pixel depth must be greater than zero", nameof(pixelDepth));
 
             int bytesPerPixel = (pixelDepth + 7) / 8;
-
-            if (option == StrideOption.None)
-            {
-                return width * bytesPerPixel;
-            }
 
             // Windows GDI+ requires that the stride be a multiple of four.
             // Even if not being used for Windows GDI+ there isn't a anything
