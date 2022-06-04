@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutApp" xml:space="preserve">
-    <value>ImageSomethingDoer 2021 Kukuri Studio</value>
+    <value>ImageSomethingDoer 2022 Kukuri Studio</value>
   </data>
   <data name="AboutAppCmdMenu" xml:space="preserve">
     <value>ImageSomethingDoerについて</value>
