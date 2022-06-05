@@ -134,8 +134,8 @@ namespace ImageSomethingDoer
 				PngBitmapDecoder decoder = null;
 
 				string ext = System.IO.Path.GetExtension(fullPath);
-                if (ext.ToLower() == ".bmp")
-                {
+				if (ext.ToLower() == ".bmp")
+				{
 					int hr = 0;
 					string message = Resources.EnumResource.ModelError_Unsupported;
 					try
@@ -150,7 +150,7 @@ namespace ImageSomethingDoer
 					// bfがnullでもこの後の処理に任せる
 				}
 				else if (ext.ToLower() == ".png")
-                {
+				{
 					int hr = 0;
 					string message = Resources.EnumResource.ModelError_Unsupported;
 					try
@@ -179,68 +179,109 @@ namespace ImageSomethingDoer
 						return false;
 					}
 				}
-				else if (ext.ToLower() == ".tga" ||
-                        ext.ToLower() == ".dds")
-                {
-                    // TGA & DDS by Pfim
-                    // https://github.com/nickbabcock/Pfim
+				else if (ext.ToLower() == ".tga")
+				{
+					int hr = 0;
+					string message = Resources.EnumResource.ModelError_Unsupported;
 
-                    int hr = 0;
-                    string message = Resources.EnumResource.ModelError_Unsupported;
-                    try
-                    {
-                        using (var image = Pfim.Pfim.FromStream(fs_read))
-                        {
-                            PixelFormat pixelFormat_;
-                            switch (image.Format)
-                            {
-                                case Pfim.ImageFormat.Rgba32:
-                                    pixelFormat_ = PixelFormats.Bgra32;
-                                    break;
-                                case Pfim.ImageFormat.Rgb24:
-                                    pixelFormat_ = PixelFormats.Bgr24;
-                                    break;
-                                case Pfim.ImageFormat.R5g6b5:
-                                    pixelFormat_ = PixelFormats.Bgr565;
-                                    break;
-                                case Pfim.ImageFormat.R5g5b5a1:
-                                case Pfim.ImageFormat.R5g5b5:
-                                    pixelFormat_ = PixelFormats.Bgr555;
-                                    break;
-                                case Pfim.ImageFormat.Rgb8: // 232
-                                case Pfim.ImageFormat.Rgba16: //4444
-                                default:
-                                    throw new NotImplementedException();
-                            }
+					try
+					{
+						using (var image = TgaLoader.FromStream(fs_read))
+						{
+							if (image.Data != null)
+							{
+								var handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+								try
+								{
+									IntPtr bitData = Marshal.UnsafeAddrOfPinnedArrayElement(image.Data, 0);
+									int bufferSize = image.Height * image.Stride;
+									var bitmapSource = BitmapSource.Create(image.Width, image.Height, 96, 96, image.PixelFormat, image.Palette, bitData, bufferSize, image.Stride);
+									bf = BitmapFrame.Create(bitmapSource);
 
-                            var handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
-                            try
-                            {
-                                IntPtr bitData = Marshal.UnsafeAddrOfPinnedArrayElement(image.Data, 0);
-                                int bufferSize = image.Height * image.Stride;
-                                var bitmapSource = BitmapSource.Create(image.Width, image.Height, 96, 96, pixelFormat_, null, bitData, bufferSize, image.Stride);
-                                bf = BitmapFrame.Create(bitmapSource);
+								}
+								finally
+								{
+									handle.Free();
+								}
+							}
+						}
+					}
 
-                            }
-                            finally
-                            {
-                                handle.Free();
-                            }
-                        }
-                    }
+					catch (Exception e)
+					{
+						hr = e.HResult;
+						message = e.Message;
+					}
+					if (bf == null)
+					{
+						SetErrorInfo(message);
+						AddErrorMessage("\n" + string.Format("0x{0:x}", hr));
+						return false;
+					}
+				}
+				else if (ext.ToLower() == ".dds")
+				{
+					int hr = 0;
+					string message = Resources.EnumResource.ModelError_Unsupported;
 
-                    catch (Exception e)
-                    {
-                        hr = e.HResult;
-                        message = e.Message;
-                    }
-                    if (bf == null)
-                    {
-                        SetErrorInfo(message);
-                        AddErrorMessage("\n" + string.Format("0x{0:x}", hr));
-                        return false;
-                    }
-                }
+					// TGA & DDS by Pfim
+					// https://github.com/nickbabcock/Pfim
+
+					try
+					{
+						using (var image = Pfim.Pfim.FromStream(fs_read))
+						{
+							PixelFormat pixelFormat_;
+							switch (image.Format)
+							{
+								case Pfim.ImageFormat.Rgba32:
+									pixelFormat_ = PixelFormats.Bgra32;
+									break;
+								case Pfim.ImageFormat.Rgb24:
+									pixelFormat_ = PixelFormats.Bgr24;
+									break;
+								case Pfim.ImageFormat.R5g6b5:
+									pixelFormat_ = PixelFormats.Bgr565;
+									break;
+								case Pfim.ImageFormat.R5g5b5a1:
+								case Pfim.ImageFormat.R5g5b5:
+									pixelFormat_ = PixelFormats.Bgr555;
+									break;
+								case Pfim.ImageFormat.Rgb8: // 232
+								case Pfim.ImageFormat.Rgba16: //4444
+								default:
+									throw new NotImplementedException();
+							}
+
+							var handle = GCHandle.Alloc(image.Data, GCHandleType.Pinned);
+							try
+							{
+								IntPtr bitData = Marshal.UnsafeAddrOfPinnedArrayElement(image.Data, 0);
+								int bufferSize = image.Height * image.Stride;
+								var bitmapSource = BitmapSource.Create(image.Width, image.Height, 96, 96, pixelFormat_, null, bitData, bufferSize, image.Stride);
+								bf = BitmapFrame.Create(bitmapSource);
+
+							}
+							finally
+							{
+								handle.Free();
+							}
+						}
+					}
+
+					catch (Exception e)
+					{
+						hr = e.HResult;
+						message = e.Message;
+					}
+
+					if (bf == null)
+					{
+						SetErrorInfo(message);
+						AddErrorMessage("\n" + string.Format("0x{0:x}", hr));
+						return false;
+					}
+				}
 
                 if (bf == null)
 				{
